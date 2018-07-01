@@ -1,7 +1,7 @@
 // @ts-ignore: Ignore not having this definition for now
-import pathMatch from 'path-match';
-import { Middleware, Context } from '@curveball/core';
+import { Context, Middleware } from '@curveball/core';
 import http from 'http';
+import pathMatch from 'path-match';
 
 type Dispatcher = {
 
@@ -29,9 +29,9 @@ type Dispatcher = {
  *
  * });
  */
-export default function route(path: string, middleware: Middleware) : Middleware;
-export default function route(path: string) : Dispatcher;
-export default function route(path: string, middleware?: Middleware) : Middleware {
+export default function route(path: string, middleware: Middleware): Middleware;
+export default function route(path: string): Dispatcher;
+export default function route(path: string, middleware?: Middleware): Middleware {
 
   if (typeof middleware === 'undefined') {
     return methodRoute(path);
@@ -48,7 +48,7 @@ function anyMethodRoute(path: string, middleware: Middleware): Middleware {
   return (ctx, next) => {
 
     const params = match(ctx.request.path);
-    if (params===false) {
+    if (params === false) {
       return next();
     }
     ctx.state.params = params;
@@ -56,13 +56,13 @@ function anyMethodRoute(path: string, middleware: Middleware): Middleware {
 
   };
 
-};
+}
 
 function methodRoute(path: string): Dispatcher {
 
   const match = pathMatch()(path);
-  const perMethodMw:{ [method: string]: Middleware } = {};
-  const dispatcher:any = (ctx: Context, next: () => Promise<void>) => {
+  const perMethodMw: { [method: string]: Middleware } = {};
+  const dispatcher: any = (ctx: Context, next: () => Promise<void>) => {
 
     const params = match(ctx.request.path);
     if (params === false) {
@@ -71,7 +71,7 @@ function methodRoute(path: string): Dispatcher {
     }
 
     ctx.state.params = params;
-    if(perMethodMw[ctx.request.method] === undefined) {
+    if (perMethodMw[ctx.request.method] === undefined) {
       // There was no middleware for this method
       ctx.response.status = 405;
       ctx.response.body = 'Method Not Allowed';
@@ -81,14 +81,14 @@ function methodRoute(path: string): Dispatcher {
     return perMethodMw[ctx.request.method](ctx, next);
 
   };
-  for(const method of http.METHODS) {
+  for (const method of http.METHODS) {
 
     dispatcher[method.toLowerCase()] = (methodMw: Middleware) => {
 
       perMethodMw[method] = methodMw;
       return dispatcher;
 
-    }
+    };
 
   }
 
