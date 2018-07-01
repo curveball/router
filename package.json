@@ -1,7 +1,7 @@
 {
-  "name": "@curveball/new-package",
+  "name": "@curveball/router",
   "version": "0.0.1",
-  "description": "Description goes here",
+  "description": "Router middleware for Curveball",
   "main": "dist/index.js",
   "scripts": {
     "prepublish": "make build",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/curveballjs/new-package.git"
+    "url": "git+https://github.com/curveballjs/router.git"
   },
   "files": [
     "package.json",
@@ -25,14 +25,15 @@
     "typescript",
     "push",
     "http2",
-    "curveball"
+    "curveball",
+    "router"
   ],
   "author": "Evert Pot (https://evertpot.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/curveballjs/new-package/issues"
+    "url": "https://github.com/curveballjs/router/issues"
   },
-  "homepage": "https://github.com/curveballjs/new-package#readme",
+  "homepage": "https://github.com/curveballjs/router#readme",
   "devDependencies": {
     "@types/chai": "^4.1.4",
     "@types/mocha": "^5.2.3",
@@ -53,6 +54,7 @@
     ]
   },
   "dependencies": {
-    "@curveball/curveball": "^0.3.1"
+    "@curveball/core": "^0.4.0",
+    "path-match": "^1.2.4"
   }
 }

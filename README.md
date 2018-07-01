@@ -1,12 +1,13 @@
-Curveball New Package
-=====================
+Curveball Router
+===============
 
-This repository serves as the skeleton for all new [Curveball][1] packages.
+This package is a simple router for [Curveball][1].
+
 
 Installation
 ------------
 
-    npm install @curveball/new-package 
+    npm install @curveball/router
 
 
 Getting started
