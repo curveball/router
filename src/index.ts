@@ -1,6 +1,6 @@
-// @ts-ignore: Ignore not having this definition for now
 import { Context, Middleware } from '@curveball/core';
 import http from 'http';
+// @ts-ignore: Ignore not having this definition for now
 import pathMatch from 'path-match';
 
 type Dispatcher = {
