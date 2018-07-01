@@ -1,3 +1,4 @@
+// @ts-ignore: Ignore not having this definition for now
 import pathMatch from 'path-match';
 import { Middleware, Context } from '@curveball/core';
 import http from 'http';
@@ -32,7 +33,7 @@ export default function route(path: string, middleware: Middleware) : Middleware
 export default function route(path: string) : Dispatcher;
 export default function route(path: string, middleware?: Middleware) : Middleware {
 
-  if (typeof middleware === undefined) {
+  if (typeof middleware === 'undefined') {
     return methodRoute(path);
   } else {
     return anyMethodRoute(path, middleware);
