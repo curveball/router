@@ -47,7 +47,7 @@ function anyMethodRoute(path: string, middleware: Middleware): Middleware {
 
   return (ctx, next) => {
 
-    const params = match(ctx.request.path);
+    const params = match(ctx.path);
     if (params === false) {
       return next();
     }
@@ -64,21 +64,21 @@ function methodRoute(path: string): Dispatcher {
   const perMethodMw: { [method: string]: Middleware } = {};
   const dispatcher: any = (ctx: Context, next: () => Promise<void>) => {
 
-    const params = match(ctx.request.path);
+    const params = match(ctx.path);
     if (params === false) {
       // Path did not match
       return next();
     }
 
     ctx.state.params = params;
-    if (perMethodMw[ctx.request.method] === undefined) {
+    if (perMethodMw[ctx.method] === undefined) {
       // There was no middleware for this method
       ctx.response.status = 405;
       ctx.response.body = 'Method Not Allowed';
       return;
     }
 
-    return perMethodMw[ctx.request.method](ctx, next);
+    return perMethodMw[ctx.method](ctx, next);
 
   };
   for (const method of http.METHODS) {

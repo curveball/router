@@ -54,7 +54,7 @@
     ]
   },
   "dependencies": {
-    "@curveball/core": "^0.4.0",
+    "@curveball/core": "^0.5.0",
     "path-match": "^1.2.4"
   }
 }
