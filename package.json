@@ -1,6 +1,6 @@
 {
   "name": "@curveball/router",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Router middleware for Curveball",
   "main": "dist/index.js",
   "scripts": {
@@ -54,7 +54,7 @@
     ]
   },
   "dependencies": {
-    "@curveball/core": "^0.5.0",
+    "@curveball/core": ">=0.7.0 <1.0.0",
     "path-match": "^1.2.4"
   }
 }
