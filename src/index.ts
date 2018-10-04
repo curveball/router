@@ -73,7 +73,7 @@ function methodRoute(path: string): Dispatcher {
     ctx.state.params = params;
     if (perMethodMw[ctx.method] === undefined) {
       // There was no middleware for this method
-      ctx.response.status = 405;
+      ctx.status = 405;
       ctx.response.body = 'Method Not Allowed';
       return;
     }
