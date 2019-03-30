@@ -13,11 +13,19 @@ describe('method-based routes', async () => {
     .post( ctx => {
       ctx.response.body = 'POST /foo/' + ctx.state.params.id;
     })
+    .delete( (ctx, next) => {
+      ctx.state.blaw = 'sup';
+      return next();
+    })
   );
   // Fallback
   app.use( ctx => {
 
-    ctx.response.body = '404';
+    if (ctx.state.blaw === 'sup') {
+      ctx.response.body = 'passed through';
+    } else {
+      ctx.response.body = '404';
+    }
 
   });
 
@@ -38,8 +46,14 @@ describe('method-based routes', async () => {
   it('should set the status to 405 if a route matched, but a method didnt', async () => {
 
     const response = await app.subRequest('PUT', '/foo/1');
-    expect(response.body).to.equal('Method Not Allowed');
     expect(response.status).to.equal(405);
+
+  });
+
+  it('should allow a method passing on handling a request with next()', async() => {
+
+    const response = await app.subRequest('DELETE', '/foo/1');
+    expect(response.body).to.equal('passed through');
 
   });
 

@@ -11,10 +11,20 @@ describe('simple routes', async () => {
     
 
   }));
+  app.use(router('/pass', (ctx, next) => {
+
+    ctx.state.pass = true;
+    return next(); 
+
+  }));
   // Fallback
   app.use( ctx => {
 
-    ctx.response.body = '404';
+    if (ctx.state.pass) {
+      ctx.response.body = 'passed through';
+    } else {
+      ctx.response.body = '404';
+    }
 
   });
 
@@ -31,5 +41,13 @@ describe('simple routes', async () => {
     expect(response.body).to.equal('404');
 
   });
+
+  it('should allow passing on handling a request with next()', async() => {
+
+    const response = await app.subRequest('GET', '/pass');
+    expect(response.body).to.equal('passed through');
+
+  });
+
 
 });

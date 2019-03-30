@@ -1,3 +1,10 @@
+0.2.1 (2019-03-30)
+==================
+
+* Updated to work with controller-style middlewares.
+* Updated dependencies.
+
+
 0.2.0 (2018-10-04)
 ==================
 

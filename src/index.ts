@@ -1,7 +1,8 @@
-import { Context, Middleware } from '@curveball/core';
+import { Context, Middleware, invokeMiddlewares } from '@curveball/core';
 import http from 'http';
 // @ts-ignore: Ignore not having this definition for now
 import pathMatch from 'path-match';
+import { MethodNotAllowed } from '@curveball/http-errors';
 
 type Dispatcher = {
 
@@ -52,7 +53,13 @@ function anyMethodRoute(path: string, middleware: Middleware): Middleware {
       return next();
     }
     ctx.state.params = params;
-    return middleware(ctx, next);
+    return invokeMiddlewares(
+      ctx,
+      [
+        middleware,
+        () => next()
+      ]
+    );
 
   };
 
@@ -72,13 +79,13 @@ function methodRoute(path: string): Dispatcher {
 
     ctx.state.params = params;
     if (perMethodMw[ctx.method] === undefined) {
-      // There was no middleware for this method
-      ctx.status = 405;
-      ctx.response.body = 'Method Not Allowed';
-      return;
+      throw new MethodNotAllowed();
     }
 
-    return perMethodMw[ctx.method](ctx, next);
+    return invokeMiddlewares(ctx, [
+      perMethodMw[ctx.method],
+      () => next()
+    ]);
 
   };
   for (const method of http.METHODS) {
