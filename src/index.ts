@@ -1,8 +1,8 @@
-import { Context, Middleware, invokeMiddlewares } from '@curveball/core';
+import { Context, invokeMiddlewares, Middleware } from '@curveball/core';
+import { MethodNotAllowed } from '@curveball/http-errors';
 import http from 'http';
 // @ts-ignore: Ignore not having this definition for now
 import pathMatch from 'path-match';
-import { MethodNotAllowed } from '@curveball/http-errors';
 
 type Dispatcher = {
 
