@@ -1,6 +1,6 @@
 {
   "name": "@curveball/router",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Router middleware for Curveball",
   "main": "dist/index.js",
   "scripts": {
@@ -35,17 +35,17 @@
   },
   "homepage": "https://github.com/curveballjs/router#readme",
   "devDependencies": {
-    "@types/chai": "^4.1.7",
+    "@types/chai": "^4.2.2",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^12.6.8",
+    "@types/node": "^12.7.5",
     "@types/sinon": "^7.0.13",
     "chai": "^4.2.0",
     "mocha": "^6.2.0",
     "nyc": "^14.1.1",
-    "sinon": "^7.3.2",
+    "sinon": "^7.4.2",
     "ts-node": "^8.3.0",
-    "tslint": "^5.18.0",
-    "typescript": "^3.5.3"
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3"
   },
   "types": "dist/",
   "nyc": {
@@ -54,7 +54,7 @@
     ]
   },
   "dependencies": {
-    "@curveball/core": "^0.8.6",
+    "@curveball/core": "^0.9.0",
     "path-match": "^1.2.4"
   }
 }
