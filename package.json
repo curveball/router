@@ -1,6 +1,6 @@
 {
   "name": "@curveball/router",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Router middleware for Curveball",
   "main": "dist/index.js",
   "scripts": {
