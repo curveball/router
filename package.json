@@ -38,7 +38,7 @@
     "@curveball/core": "^0.10.0",
     "@types/chai": "^4.2.7",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^10.17.13",
+    "@types/node": "^13.5.1",
     "@types/sinon": "^7.5.1",
     "chai": "^4.2.0",
     "mocha": "^7.0.0",
