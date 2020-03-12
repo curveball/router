@@ -1,7 +1,7 @@
 Curveball Router
 ===============
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/curveballjs/router.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/curveball/router.svg)](https://greenkeeper.io/)
 
 This package is a simple router for [Curveball][1]. It's heavily inspired by
 [koa-path-match][2].
@@ -44,5 +44,5 @@ app.use(
 );
 ```
 
-[1]: https://github.com/curveballjs/
+[1]: https://github.com/curveball/
 [2]: https://github.com/koajs/path-match
