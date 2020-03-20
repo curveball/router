@@ -20,7 +20,7 @@ The simplest, and recommended form works as follows:
 
 ```typescript
 import { Application } from '@curveball/core';
-import { router } from '@curveball/router';
+import router from '@curveball/router';
 
 const app = Application();
 app.use(
@@ -34,7 +34,7 @@ It's also possible to do per-method routing, using the following syntax.
 
 ```typescript
 import { Application } from '@curveball/core';
-import { router } from '@curveball/router';
+import router from '@curveball/router';
 
 const app = Application();
 app.use(
