@@ -4,17 +4,9 @@ import * as http from 'http';
 import { match } from 'path-to-regexp';
 import './declarations';
 
-type Dispatcher = {
-
-  delete: (mw: Middleware) => Dispatcher;
-  get: (mw: Middleware) => Dispatcher;
-  head: (mw: Middleware) => Dispatcher;
-  options: (mw: Middleware) => Dispatcher;
-  patch: (mw: Middleware) => Dispatcher;
-  post: (mw: Middleware) => Dispatcher;
-  put: (mw: Middleware) => Dispatcher;
-
-} & Middleware;
+type DispatcherFunc = (mw: Middleware, ...mws: Middleware[]) => Dispatcher;
+type Methods = 'delete' | 'get' | 'head' | 'options' | 'patch' | 'post' | 'put';
+type Dispatcher = Record<Methods, DispatcherFunc> & Middleware;
 
 /**
  * The route function creates a route middleware.
@@ -30,19 +22,19 @@ type Dispatcher = {
  *
  * });
  */
-export default function route(path: string, middleware: Middleware): Middleware;
+export default function route(path: string, middleware: Middleware, ...middlewares: Middleware[]): Middleware;
 export default function route(path: string): Dispatcher;
-export default function route(path: string, middleware?: Middleware): Middleware {
+export default function route(path: string, ...middlewares: Middleware[]): Middleware {
 
-  if (typeof middleware === 'undefined') {
+  if (middlewares.length === 0) {
     return methodRoute(path);
   } else {
-    return anyMethodRoute(path, middleware);
+    return anyMethodRoute(path, ...middlewares);
   }
 
 }
 
-function anyMethodRoute(path: string, middleware: Middleware): Middleware {
+function anyMethodRoute(path: string, ...middlewares: Middleware[]): Middleware {
 
   const m = match(path);
 
@@ -60,7 +52,7 @@ function anyMethodRoute(path: string, middleware: Middleware): Middleware {
     return invokeMiddlewares(
       ctx,
       [
-        middleware,
+        ...middlewares,
         () => next()
       ]
     );
@@ -72,8 +64,8 @@ function anyMethodRoute(path: string, middleware: Middleware): Middleware {
 function methodRoute(path: string): Dispatcher {
 
   const m = match(path);
-  const perMethodMw: { [method: string]: Middleware } = {};
-  const dispatcher: any = (ctx: Context, next: () => Promise<void>) => {
+  const perMethodMws: { [method: string]: Middleware[] } = {};
+  const dispatcherMw: Middleware = (ctx: Context, next: () => Promise<void>) => {
 
     const result = m(ctx.path);
     if (result === false) {
@@ -86,21 +78,25 @@ function methodRoute(path: string): Dispatcher {
     ctx.state.params = result.params;
 
 
-    if (perMethodMw[ctx.method] === undefined) {
+    if (perMethodMws[ctx.method] === undefined || perMethodMws[ctx.method].length === 0) {
       throw new MethodNotAllowed();
     }
 
     return invokeMiddlewares(ctx, [
-      perMethodMw[ctx.method],
+      ...perMethodMws[ctx.method],
       () => next()
     ]);
 
   };
+  const dispatcher: Dispatcher = Object.assign(
+    dispatcherMw,
+    {} as Record<Methods, DispatcherFunc>
+  );
   for (const method of http.METHODS) {
 
-    dispatcher[method.toLowerCase()] = (methodMw: Middleware) => {
+    dispatcher[method.toLowerCase() as Methods] = (...mws: Middleware[]) => {
 
-      perMethodMw[method] = methodMw;
+      perMethodMws[method] = mws;
       return dispatcher;
 
     };

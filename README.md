@@ -40,5 +40,23 @@ app.use(
 );
 ```
 
+You can either specify 1, or multiple middlewares. The following example runs
+2 fictional middlewares on a route.
+
+```typescript
+const app = Application();
+
+const route = router(
+  '/foo/:id',
+  myAuthMiddleware,
+  myBodyparser,
+  ctx => {
+    ctx.response.body = 'success!';
+  }
+);
+
+app.use(route);
+```
+
 [1]: https://github.com/curveball/
 [2]: https://github.com/koajs/path-match
