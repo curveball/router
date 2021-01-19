@@ -49,5 +49,16 @@ describe('simple routes', async () => {
 
   });
 
+  it('should support multiple middlewares', async () => {
+
+    const app = new Application();
+    app.use(router('/foo',
+      (ctx, next) => next(),
+      ctx => { ctx.response.body = 'Hello world'; }
+    ));
+    const response = await app.subRequest('GET', '/foo');
+    expect(response.body).to.equal('Hello world');
+
+  });
 
 });

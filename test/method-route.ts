@@ -57,4 +57,21 @@ describe('method-based routes', async () => {
 
   });
 
+  it('should support multiple middlewares', async() => {
+
+    const app2 = new Application();
+    app2.use(router('/foo/:id')
+      .get(
+        (ctx, next) => {
+          return next();
+        },
+        ctx => {
+          ctx.response.body = 'GET /foo/' + ctx.state.params.id;
+        })
+    );
+    const response = await app2.subRequest('GET', '/foo/1');
+    expect(response.body).to.equal('GET /foo/1');
+
+  });
+
 });
