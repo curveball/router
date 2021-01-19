@@ -1,8 +1,8 @@
 import { Context, invokeMiddlewares, Middleware } from '@curveball/core';
 import { MethodNotAllowed } from '@curveball/http-errors';
-import http from 'http';
-// @ts-ignore: Ignore not having this definition for now
-import pathMatch from 'path-match';
+import * as http from 'http';
+import { match } from 'path-to-regexp';
+import './declarations';
 
 type Dispatcher = {
 
@@ -44,15 +44,19 @@ export default function route(path: string, middleware?: Middleware): Middleware
 
 function anyMethodRoute(path: string, middleware: Middleware): Middleware {
 
-  const match = pathMatch()(path);
+  const m = match(path);
 
   return (ctx, next) => {
 
-    const params = match(ctx.path);
-    if (params === false) {
+    const result = m(ctx.path);
+    if (result === false) {
       return next();
     }
-    ctx.state.params = params;
+
+    ctx.params = result.params as Record<string, string>;
+    // This is deprecated
+    ctx.state.params = result.params;
+
     return invokeMiddlewares(
       ctx,
       [
@@ -67,17 +71,21 @@ function anyMethodRoute(path: string, middleware: Middleware): Middleware {
 
 function methodRoute(path: string): Dispatcher {
 
-  const match = pathMatch()(path);
+  const m = match(path);
   const perMethodMw: { [method: string]: Middleware } = {};
   const dispatcher: any = (ctx: Context, next: () => Promise<void>) => {
 
-    const params = match(ctx.path);
-    if (params === false) {
+    const result = m(ctx.path);
+    if (result === false) {
       // Path did not match
       return next();
     }
 
-    ctx.state.params = params;
+    ctx.params = result.params as Record<string, string>;
+    // This is deprecated
+    ctx.state.params = result.params;
+
+
     if (perMethodMw[ctx.method] === undefined) {
       throw new MethodNotAllowed();
     }
