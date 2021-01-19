@@ -8,13 +8,13 @@ describe('simple routes', async () => {
   app.use(router('/foo', ctx => {
 
     ctx.response.body = 'Hello world';
-    
+
 
   }));
   app.use(router('/pass', (ctx, next) => {
 
     ctx.state.pass = true;
-    return next(); 
+    return next();
 
   }));
   // Fallback

@@ -4,9 +4,10 @@
   "description": "Router middleware for Curveball",
   "main": "dist/index.js",
   "scripts": {
-    "prepublish": "make build",
+    "prepublishOnly": "make build",
     "test": "make lint test",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "start": "make start"
   },
   "repository": {
     "type": "git",
@@ -35,18 +36,18 @@
   },
   "homepage": "https://github.com/curveball/router#readme",
   "devDependencies": {
-    "@curveball/core": "^0.10.0",
-    "@types/chai": "^4.2.7",
-    "@types/mocha": "^5.2.7",
-    "@types/node": "^10.17.13",
-    "@types/sinon": "^7.5.1",
+    "@curveball/core": "^0.16.0-beta.0",
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.2.0",
+    "@types/node": "^12.19.14",
+    "@typescript-eslint/eslint-plugin": "^4.14.0",
+    "@typescript-eslint/parser": "^4.14.0",
     "chai": "^4.2.0",
-    "mocha": "^7.0.0",
-    "nyc": "^15.0.0",
-    "sinon": "^8.0.2",
-    "ts-node": "^8.5.4",
-    "tslint": "^5.20.1",
-    "typescript": "^3.7.4"
+    "eslint": "^7.18.0",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
   },
   "types": "dist/",
   "nyc": {
@@ -55,10 +56,10 @@
     ]
   },
   "dependencies": {
-    "path-match": "^1.2.4"
+    "path-to-regexp": "^6.2.0"
   },
   "peerDependencies": {
-    "@curveball/core": ">=0.9.1 <1"
+    "@curveball/core": ">=0.16.0-beta.0 <1",
   },
   "mocha": {
     "require": "ts-node/register",

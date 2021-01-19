@@ -1,11 +1,7 @@
 Curveball Router
-===============
+================
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/curveball/router.svg)](https://greenkeeper.io/)
-
-This package is a simple router for [Curveball][1]. It's heavily inspired by
-[koa-path-match][2].
-
+This package is a simple router for [Curveball][1].
 
 Installation
 ------------
@@ -25,7 +21,7 @@ import router from '@curveball/router';
 const app = Application();
 app.use(
   router('/foo/:id', ctx => {
-    // the 'id' is available via ctx.state.params.id
+    // the 'id' is available via ctx.params.id
   })
 );
 ```

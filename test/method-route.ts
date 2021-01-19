@@ -7,6 +7,7 @@ describe('method-based routes', async () => {
   const app = new Application();
   app.use(router('/foo/:id')
     .get( ctx => {
+      console.log(ctx.state);
       ctx.response.body = 'GET /foo/' + ctx.state.params.id;
 
     })
