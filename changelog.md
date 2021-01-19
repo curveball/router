@@ -1,10 +1,18 @@
 Changelog
 =========
 
-0.2.5 (?)
-------------------
+0.3.0-beta.0 (2020-01-19)
+-------------------------
 
-* Typescript target is now es2019 instead of esnext to ensure that older Node.js versions are supported.
+* Support for multiplewares per route.
+* Route parameters are now available on `ctx.params` and are now typed.
+  `ctx.state.params` is also still available, but will be removed in a future
+  major version.
+* Typescript target is now es2019 instead of esnext to ensure that older
+  Node.js versions are supported.
+* No longer using `path-match`, which was deprecated. Instead, we're using
+  `path-to-regexp` directly.
+* Switched from tslint to eslint.
 
 
 0.2.4 (2020-01-05)
