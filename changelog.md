@@ -1,10 +1,15 @@
 Changelog
 =========
 
-0.2.5 (?)
+0.3.0 (2021-02-01)
 ------------------
 
-* Typescript target is now es2019 instead of esnext to ensure that older Node.js versions are supported.
+* Every route can now supply multiple middlewares, which will run in order.
+* Instead of `ctx.state.params`, params are now set in `ctx.params` and have
+  stronger typing. The old `ctx.state.params` still work, but will be removed
+  in a future version.
+* Typescript target is now es2019 instead of esnext to ensure that older
+  Node.js versions are supported.
 
 
 0.2.4 (2020-01-05)
