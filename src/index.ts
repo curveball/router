@@ -88,8 +88,10 @@ function methodRoute(path: string): Dispatcher {
     ]);
 
   };
+
   const dispatcher: Dispatcher = Object.assign(
     dispatcherMw,
+    /* eslint-disable @typescript-eslint/consistent-type-assertions */
     {} as Record<Methods, DispatcherFunc>
   );
   for (const method of http.METHODS) {
