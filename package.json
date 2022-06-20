@@ -63,7 +63,7 @@
     "path-to-regexp": "^6.2.0"
   },
   "peerDependencies": {
-    "@curveball/core": ">=0.16 <1"
+    "@curveball/core": ">=0.19 <1"
   },
   "mocha": {
     "require": "ts-node/register",

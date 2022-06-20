@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.4.1 (2022-06-20)
+------------------
+
+* Require @curveball/core 0.19 in peerDependencies.
+
+
 0.4.0 (2022-06-20)
 ------------------
 
