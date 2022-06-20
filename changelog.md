@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.4.0 (2022-06-20)
+------------------
+
+* Requires Node 14 and up, and curveball/core 0.19 and up.
+
+
 0.3.0 (2021-02-01)
 ------------------
 
