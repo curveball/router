@@ -4,7 +4,7 @@ declare module '@curveball/core' {
 
   interface Context {
     params: Record<string, string>;
-    router: {
+    router?: {
       matchedRoute: string;
     };
   }

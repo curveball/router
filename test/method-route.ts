@@ -76,11 +76,11 @@ describe('method-based routes', async () => {
 
   it('should add the matched route to the context', async() => {
 
-    let matchedRoute = '';
+    let matchedRoute;
     const app2 = new Application();
     app2.use(router('/foo/:id')
       .get( ctx => {
-        matchedRoute = ctx.router.matchedRoute;
+        matchedRoute = ctx.router?.matchedRoute;
         ctx.response.body = 'GET /foo/' + ctx.state.params.id;
 
       })

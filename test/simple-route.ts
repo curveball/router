@@ -63,12 +63,12 @@ describe('simple routes', async () => {
 
   it('should add the matched route to the context', async () => {
 
-    let matchedRoute = '';
+    let matchedRoute;
     const app = new Application();
     app.use(router('/foo/:id',
       (ctx, next) => next(),
       ctx => {
-        matchedRoute = ctx.router.matchedRoute;
+        matchedRoute = ctx.router?.matchedRoute;
         ctx.response.body = 'Hello world';
       }
     ));
