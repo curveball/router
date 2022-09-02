@@ -58,5 +58,31 @@ const route = router(
 app.use(route);
 ```
 
+Access matched route in other middleware
+---------------
+The matched route is added into the Curveball context for other middleware to access
+if they need (such as for access request logging). It will be accessible after the
+router has executed.
+
+```typescript
+import { Application, Context } from '@curveball/core';
+import router from '@curveball/router';
+
+const app = Application();
+app.use(async (ctx: Context, next) => {
+  await next();
+
+  // Will be '/foo/:id'
+  const matchedRoute = ctx.router?.matchedRoute;
+});
+
+app.use(
+  router('/foo/:id', ctx => {
+    ctx.response.body = '/foo/' + ctx.state.params.id;
+  });
+);
+```
+
+
 [1]: https://github.com/curveball/
 [2]: https://github.com/koajs/path-match

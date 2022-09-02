@@ -49,6 +49,10 @@ function anyMethodRoute(path: string, ...middlewares: Middleware[]): Middleware 
     // This is deprecated
     ctx.state.params = result.params;
 
+    ctx.router = {
+      matchedRoute: path
+    };
+
     return invokeMiddlewares(
       ctx,
       [
@@ -77,6 +81,9 @@ function methodRoute(path: string): Dispatcher {
     // This is deprecated
     ctx.state.params = result.params;
 
+    ctx.router = {
+      matchedRoute: path
+    };
 
     if (perMethodMws[ctx.method] === undefined || perMethodMws[ctx.method].length === 0) {
       throw new MethodNotAllowed();
