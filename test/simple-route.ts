@@ -61,4 +61,21 @@ describe('simple routes', async () => {
 
   });
 
+  it('should add the matched route to the context', async () => {
+
+    let matchedRoute = '';
+    const app = new Application();
+    app.use(router('/foo/:id',
+      (ctx, next) => next(),
+      ctx => {
+        matchedRoute = ctx.router.matchedRoute;
+        ctx.response.body = 'Hello world';
+      }
+    ));
+    const response = await app.subRequest('GET', '/foo/1');
+    expect(response.body).to.equal('Hello world');
+    expect(matchedRoute).to.equal('/foo/:id');
+
+  });
+
 });
