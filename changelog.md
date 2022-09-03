@@ -5,7 +5,7 @@ Changelog
 ------------------
 
 * This package now adds a `router.matchedRoute` property to `Context`. This
-  property will contain the (last) used route, and might be useful for logging
+  property will contain the (last) used route and might be useful for logging
   purposes. (@mhum).
 
 
