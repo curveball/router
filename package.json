@@ -37,17 +37,18 @@
   },
   "homepage": "https://github.com/curveball/router#readme",
   "devDependencies": {
-    "@curveball/core": "^0.19.0",
+    "@curveball/kernel": "^0.20.0",
     "@types/chai": "^4.2.14",
     "@types/mocha": "^9.1.1",
-    "@types/node": "^14.18.21",
-    "@typescript-eslint/eslint-plugin": "^5.28.0",
-    "@typescript-eslint/parser": "^5.28.0",
+    "@types/node": "^14.18.26",
+    "@typescript-eslint/eslint-plugin": "^5.36.1",
+    "@typescript-eslint/parser": "^5.36.1",
     "chai": "^4.2.0",
-    "eslint": "^8.18.0",
+    "eslint": "^8.23.0",
     "mocha": "^10.0.0",
     "nyc": "^15.1.0",
-    "ts-node": "^10.8.1",
+    "sinon": "^14.0.0",
+    "ts-node": "^10.9.1",
     "typescript": "^4.1.3"
   },
   "engines": {
@@ -62,9 +63,6 @@
   "dependencies": {
     "path-to-regexp": "^6.2.0"
   },
-  "peerDependencies": {
-    "@curveball/core": ">=0.19 <1"
-  },
   "mocha": {
     "require": "ts-node/register",
     "recursive": true,
@@ -73,5 +71,8 @@
       "js",
       "tsx"
     ]
+  },
+  "peerDependencies": {
+    "@curveball/kernel": ">=0.20.0 <1"
   }
 }

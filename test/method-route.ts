@@ -1,4 +1,4 @@
-import { Application } from '@curveball/core';
+import { Application } from '@curveball/kernel';
 import router from '../src';
 import { expect } from 'chai';
 

@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.5.0 (2022-09-03)
+------------------
+
+* Upgraded from `@curveball/core` to `@curveball/kernel`.
+
+
 0.4.2 (2022-09-03)
 ------------------
 

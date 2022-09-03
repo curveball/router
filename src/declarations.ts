@@ -1,6 +1,6 @@
-import '@curveball/core';
+import '@curveball/kernel';
 
-declare module '@curveball/core' {
+declare module '@curveball/kernel' {
 
   interface Context {
     params: Record<string, string>;
