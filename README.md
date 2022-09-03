@@ -15,7 +15,7 @@ Getting started
 The simplest, and recommended form works as follows:
 
 ```typescript
-import { Application } from '@curveball/core';
+import { Application } from '@curveball/kernel';
 import router from '@curveball/router';
 
 const app = Application();
@@ -29,7 +29,7 @@ app.use(
 It's also possible to do per-method routing, using the following syntax.
 
 ```typescript
-import { Application } from '@curveball/core';
+import { Application } from '@curveball/kernel';
 import router from '@curveball/router';
 
 const app = Application();
@@ -65,7 +65,7 @@ if they need (such as for access request logging). It will be accessible after t
 router has executed.
 
 ```typescript
-import { Application, Context } from '@curveball/core';
+import { Application, Context } from '@curveball/kernel';
 import router from '@curveball/router';
 
 const app = Application();
