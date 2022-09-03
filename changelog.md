@@ -1,6 +1,14 @@
 Changelog
 =========
 
+0.4.2 (2022-09-03)
+------------------
+
+* This package now adds a `router.matchedRoute` property to `Context`. This
+  property will contain the (last) used route, and might be useful for logging
+  purposes. (@mhum).
+
+
 0.4.1 (2022-06-20)
 ------------------
 
