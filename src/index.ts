@@ -1,4 +1,4 @@
-import { Context, invokeMiddlewares, Middleware } from '@curveball/core';
+import { Context, invokeMiddlewares, Middleware } from '@curveball/kernel';
 import { MethodNotAllowed } from '@curveball/http-errors';
 import * as http from 'http';
 import { match } from 'path-to-regexp';
