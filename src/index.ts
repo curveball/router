@@ -1,8 +1,8 @@
 import { Context, invokeMiddlewares, Middleware } from '@curveball/kernel';
 import { MethodNotAllowed } from '@curveball/http-errors';
-import * as http from 'http';
+import * as http from 'node:http';
 import { match } from 'path-to-regexp';
-import './declarations';
+import './declarations.js';
 
 type DispatcherFunc = (mw: Middleware, ...mws: Middleware[]) => Dispatcher;
 type Methods = 'delete' | 'get' | 'head' | 'options' | 'patch' | 'post' | 'put';

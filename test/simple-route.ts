@@ -1,5 +1,5 @@
 import { Application } from '@curveball/kernel';
-import router from '../src';
+import router from '../src/index.js';
 import { expect } from 'chai';
 
 describe('simple routes', async () => {
