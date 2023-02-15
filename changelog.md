@@ -1,6 +1,13 @@
 Changelog
 =========
 
+0.6.0 (????-??-??)
+------------------
+
+* This package now supports ESM and CommonJS modules.
+* No longer supports Node 14. Please use Node 16 or higher.
+
+
 0.5.0 (2022-09-03)
 ------------------
 
@@ -70,7 +77,7 @@ Changelog
 
 
 0.1.0 (2018-09-04)
------------------
+------------------
 
 * Updated to latest curveball API.
 
