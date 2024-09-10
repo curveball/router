@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0.0 (????-??-??)
+2.0.0 (2024-09-10)
 ------------------
 
 * Updated path-to-regexp from 6 to 8.1, to fix a security vulnerability.
