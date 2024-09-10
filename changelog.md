@@ -1,6 +1,16 @@
 Changelog
 =========
 
+2.0.0 (????-??-??)
+------------------
+
+* Updated path-to-regexp from 6 to 8.1, to fix a security vulnerability.
+  Unfortunately the supported syntax for path-to-regexp has changed slightly
+  for complex routes, so this is a breaking change. Most common simple routes
+  will not be affected. For more information consult the path-to-regexp
+  changelog: https://github.com/pillarjs/path-to-regexp/releases
+
+
 1.0.0 (2024-01-16)
 ------------------
 
