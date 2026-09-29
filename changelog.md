@@ -1,9 +1,11 @@
 Changelog
 =========
 
-2.0.1 (????-??-??)
+3.0.0 (????-??-??)
 ------------------
 
+* BC Break: Node 20 is now the minimum supported version. Node 18 is no longer
+  tested.
 * Updated path-to-regexp to 8.4, to fix two security vulnerabilities
   (CVE-2026-4926, CVE-2026-4923).
 * Updated dependencies.
