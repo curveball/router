@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.0.0 (????-??-??)
+3.0.0 (2026-09-29)
 ------------------
 
 * BC Break: Node 20 is now the minimum supported version. Node 18 is no longer
