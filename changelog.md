@@ -1,6 +1,15 @@
 Changelog
 =========
 
+2.0.1 (????-??-??)
+------------------
+
+* Updated path-to-regexp to 8.4, to fix two security vulnerabilities
+  (CVE-2026-4926, CVE-2026-4923).
+* Updated dependencies.
+* Testing Node 24.x, Node 26.x
+
+
 2.0.0 (2024-09-10)
 ------------------
 
