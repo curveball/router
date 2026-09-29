@@ -50,7 +50,6 @@
         "assertionStyle": "as",
         "objectLiteralTypeAssertions": "never"
       }],
-      "@typescript-eslint/member-delimiter-style": "error",
       "@typescript-eslint/no-inferrable-types": "off",
       "@typescript-eslint/no-explicit-any" : 0,
       "@typescript-eslint/no-for-in-array": "error",
